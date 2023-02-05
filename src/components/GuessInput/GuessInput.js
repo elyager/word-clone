@@ -1,18 +1,22 @@
 import React, { useState } from "react";
 
-function GuessInput() {
-  const [guess, setGuess] = useState("");
+function GuessInput({ handleSubmitGuess }) {
+  const [tentativeGuess, setTentativeGuess] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (guess.length !== 5) {
+    if (tentativeGuess.length !== 5) {
       window.alert(
         "Your word must be of 5 characters at least, no more no less."
       );
       return;
     }
-    console.log({ guess });
-    setGuess("");
+    // console.log({ tentativeGuess });
+    // tentativeGuesses.push(tentativeGuess);
+    // console.log(tentativeGuesses);
+    // settentativeGuesses(tentativeGuesses);
+    handleSubmitGuess(tentativeGuess);
+    setTentativeGuess("");
   }
 
   return (
@@ -27,10 +31,10 @@ function GuessInput() {
         title="Need to be a 5 characters word (no numbers)"
         id="guess-input"
         type="text"
-        value={guess}
+        value={tentativeGuess}
         onChange={(guess) => {
           const nextGuess = guess.target.value.toUpperCase();
-          setGuess(nextGuess);
+          setTentativeGuess(nextGuess);
         }}
       />
     </form>
