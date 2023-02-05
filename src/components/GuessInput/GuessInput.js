@@ -11,16 +11,12 @@ function GuessInput({ handleSubmitGuess }) {
       );
       return;
     }
-    // console.log({ tentativeGuess });
-    // tentativeGuesses.push(tentativeGuess);
-    // console.log(tentativeGuesses);
-    // settentativeGuesses(tentativeGuesses);
     handleSubmitGuess(tentativeGuess);
     setTentativeGuess("");
   }
 
   return (
-    <form className="guess-input-wrapper" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="guess-input-wrapper">
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
@@ -32,8 +28,8 @@ function GuessInput({ handleSubmitGuess }) {
         id="guess-input"
         type="text"
         value={tentativeGuess}
-        onChange={(guess) => {
-          const nextGuess = guess.target.value.toUpperCase();
+        onChange={(event) => {
+          const nextGuess = event.target.value.toUpperCase();
           setTentativeGuess(nextGuess);
         }}
       />

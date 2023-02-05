@@ -11,10 +11,12 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  function handleSubmitGuess(guess) {
-    setGuesses([...guesses, { id: `${guess}-${Math.random()}`, guess: guess }]);
-  }
   const [guesses, setGuesses] = React.useState([]);
+
+  function handleSubmitGuess(tentativeGuess) {
+    setGuesses([...guesses, tentativeGuess]);
+  }
+
   return (
     <>
       <Guesses guesses={guesses} />
